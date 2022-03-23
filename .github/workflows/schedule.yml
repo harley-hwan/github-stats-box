@@ -1,0 +1,17 @@
+name: Update gist
+on:
+  repository_dispatch:
+    types: [build-event]
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  update-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update gist
+        uses: harley-hwan/productive-box@master
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: 0ed9434d1a6ae8b31b2357230a7907a9
+          TIMEZONE: Asia/Seoul
